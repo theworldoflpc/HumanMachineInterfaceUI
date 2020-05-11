@@ -1,0 +1,167 @@
+﻿<Window x:Class="HMI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HMI"
+        mc:Ignorable="d"
+        Title="PRODUCTION LINE HMI" Height="969.065" Width="1191.516" ResizeMode="NoResize" SizeToContent="WidthAndHeight">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="112*"/>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="318*"/>
+            <ColumnDefinition Width="125*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl x:Name="tabControlHMI" HorizontalAlignment="Left" Height="940" VerticalAlignment="Top" Width="1196" Grid.ColumnSpan="4">
+            <TabItem x:Name="tabItem_Line" Header="LINE STATUS SCREEN" Margin="-2,-1,-2,3" Height="22" VerticalAlignment="Bottom">
+                <Grid Background="#FFE5E5E5" Margin="-9,-9,-2,-35" HorizontalAlignment="Left" Width="1201">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="53*"/>
+                        <ColumnDefinition Width="17*"/>
+                        <ColumnDefinition Width="0*"/>
+                        <ColumnDefinition Width="110*"/>
+                        <ColumnDefinition Width="119*"/>
+                        <ColumnDefinition Width="489*"/>
+                        <ColumnDefinition Width="414*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="button_stop" Content="STOP" HorizontalAlignment="Left" Margin="114.5,765,0,0" VerticalAlignment="Top" Width="364" Height="113" Grid.Column="5" Background="Red" Click="button_stop_Click" Foreground="#FFFDFDFD" FontSize="16"/>
+                    <Rectangle x:Name="rectangle_hopper" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="310" Margin="20,44,0,0" Stroke="Black" VerticalAlignment="Top" Width="366" Grid.ColumnSpan="6"/>
+                    <Button x:Name="button_warning_hopper" Content="STOPPED" HorizontalAlignment="Left" Margin="20,313,0,0" VerticalAlignment="Top" Width="366" Background="#FFFFE90C" Height="41" FontWeight="Bold" Grid.ColumnSpan="6"/>
+                    <Rectangle x:Name="rectangle_fillheads" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="309" Margin="113.014,45,0,0" Stroke="Black" VerticalAlignment="Top" Width="366" Grid.Column="5"/>
+                    <Button x:Name="button_warning_fill_heads" Content="STOPPED" HorizontalAlignment="Left" Margin="113.014,313,0,0" VerticalAlignment="Top" Width="366" Background="#FFFFE90C" Height="41" Grid.Column="5" FontWeight="Bold"/>
+                    <Rectangle x:Name="rectangle_weighStation" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="309" Margin="19.421,45,0,0" Stroke="Black" VerticalAlignment="Top" Width="366" Grid.Column="6"/>
+                    <Button x:Name="button_warning_weight_station" Content="STOPPED" HorizontalAlignment="Left" Margin="19.421,313,0,0" VerticalAlignment="Top" Width="366" Background="#FFFFE90C" Height="41" Grid.Column="6" FontWeight="Bold"/>
+                    <Rectangle x:Name="rectangle_Sealer" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="304" Margin="22,382,0,0" Stroke="Black" VerticalAlignment="Top" Width="366" Grid.ColumnSpan="6"/>
+                    <Button x:Name="button_warning_sealer" Content="STOPPED" HorizontalAlignment="Left" Margin="22,645,0,0" VerticalAlignment="Top" Width="366" Background="#FFFFE90C" Height="41" Grid.ColumnSpan="6" FontWeight="Bold" RenderTransformOrigin="0.526,0.932"/>
+                    <Rectangle x:Name="rectangle_labeler" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="303" Margin="115.014,383,0,0" Stroke="Black" VerticalAlignment="Top" Width="366" Grid.Column="5"/>
+                    <Button x:Name="button_warning_labeler" Content="STOPPED" HorizontalAlignment="Left" Margin="115.014,645,0,0" VerticalAlignment="Top" Width="366" Background="#FFFFE90C" Height="41" Grid.Column="5" FontWeight="Bold"/>
+                    <Rectangle x:Name="rectangle_casePacker" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="303" Margin="21.421,383,0,0" Stroke="Black" VerticalAlignment="Top" Width="366" Grid.Column="6"/>
+                    <Button x:Name="button_warning_case_packer" Content="STOPPED" HorizontalAlignment="Left" Margin="21.421,645,0,0" VerticalAlignment="Top" Width="366" Background="#FFFFE90C" Height="42" Grid.Column="6" FontWeight="Bold"/>
+                    <TextBox x:Name="textBox_CanCount" HorizontalAlignment="Left" Height="23" Margin="63.014,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Grid.Column="4" FontSize="14" Grid.ColumnSpan="2"/>
+                    <Label Content="Number of cans in hopper:" Grid.Column="1" HorizontalAlignment="Left" Margin="0,150,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="4"/>
+                    <TextBox x:Name="textBox_FillHeadsCount" HorizontalAlignment="Left" Height="23" Margin="359.014,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Grid.Column="5" FontSize="14" d:IsLocked="True"/>
+                    <Label Content="Volume of Paint/Product:" Grid.Column="5" HorizontalAlignment="Left" Margin="169.014,150,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+                    <TextBox x:Name="textBox_CanWeight" HorizontalAlignment="Left" Height="23" Margin="223.421,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Grid.Column="6" FontSize="14"/>
+                    <Label Content="Can Weight:" Grid.Column="6" HorizontalAlignment="Left" Margin="116.421,150,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+                    <TextBox x:Name="textBox_Sealer" HorizontalAlignment="Left" Height="23" Margin="59,528,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Grid.Column="4" FontSize="14" Grid.ColumnSpan="2"/>
+                    <Label Content="Number of Lids in Hopper:" HorizontalAlignment="Left" Margin="49,525,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="5"/>
+                    <TextBox x:Name="textBox_LabelsPresent" HorizontalAlignment="Left" Height="23" Margin="321.5,527,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Grid.Column="5" FontSize="14"/>
+                    <Label Content="Labels Present:" HorizontalAlignment="Left" Margin="197.5,523,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Grid.Column="5"/>
+                    <TextBox x:Name="textBox_CasePacker" HorizontalAlignment="Left" Height="23" Margin="223.421,481,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Grid.Column="6" FontSize="14"/>
+                    <Label Content="Number of Cartons:" HorizontalAlignment="Left" Margin="75.421,477,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Grid.Column="6"/>
+                    <Label Content="HOPPER STATION" Grid.Column="2" HorizontalAlignment="Left" Margin="52.014,54,0,0" VerticalAlignment="Top" Width="158" FontWeight="Bold" Grid.ColumnSpan="3" FontSize="16" Height="35"/>
+                    <Label Content="FILL HEADS STATION" Grid.Column="5" HorizontalAlignment="Left" Margin="207.014,53,0,0" VerticalAlignment="Top" Width="174" FontWeight="Bold" FontSize="16"/>
+                    <Label Content="WEIGH STATION" Grid.Column="6" HorizontalAlignment="Left" Margin="144.421,58,0,0" VerticalAlignment="Top" Width="141" FontWeight="Bold" FontSize="16"/>
+                    <Label Content="SEALER STATION" Grid.Column="2" HorizontalAlignment="Left" Margin="65.014,398,0,0" VerticalAlignment="Top" Width="141" FontWeight="Bold" Grid.ColumnSpan="3" FontSize="16"/>
+                    <Label Content="LABELER STATION" Grid.Column="5" HorizontalAlignment="Left" Margin="220.014,400,0,0" VerticalAlignment="Top" Width="174" FontWeight="Bold" FontSize="16"/>
+                    <Label Content="CASE PACKER STATION" Grid.Column="6" HorizontalAlignment="Left" Margin="114.421,401,0,0" VerticalAlignment="Top" Width="210" FontWeight="Bold" FontSize="16"/>
+                    <Separator HorizontalAlignment="Left" Height="100" Margin="0,652,0,0" VerticalAlignment="Top" Width="1201" RenderTransformOrigin="0.42,-0.07" Grid.ColumnSpan="7"/>
+                    <Button x:Name="button_StartProcess" Content="START PROCESS" HorizontalAlignment="Left" Margin="22,764,0,0" VerticalAlignment="Top" Width="364" Height="113" Background="#FF0081CB" Foreground="#FFFDFDFD" FontSize="16" Grid.ColumnSpan="6" Click="button_StartProcess_Click"/>
+                    <Button x:Name="button_shutDownProcess" Content="SHUT DOWN" HorizontalAlignment="Left" Margin="21,766,0,0" VerticalAlignment="Top" Width="364" Height="113" Background="#FFFFB900" Foreground="#FFFDFDFD" FontSize="16" Grid.Column="6" Click="button_shutDownProcess_Click"/>
+                    <TextBox x:Name="textBox_FillHeadLocation" HorizontalAlignment="Left" Height="23" Margin="359.014,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Grid.Column="5" FontSize="14"/>
+                    <Label Content="Fill Head Status:" Grid.Column="5" HorizontalAlignment="Left" Margin="229.014,183,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+                    <TextBox x:Name="textBox_PackerStatus" HorizontalAlignment="Left" Height="23" Margin="223.421,516,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Grid.Column="6" FontSize="14"/>
+                    <Label Content="Packer Status:" Grid.Column="6" HorizontalAlignment="Left" Margin="113.421,511,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+                    <TextBox x:Name="textBox_PalletStatus" HorizontalAlignment="Left" Height="23" Margin="223.421,550,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Grid.Column="6" FontSize="14"/>
+                    <Label Content="Pallet Status:" Grid.Column="6" HorizontalAlignment="Left" Margin="118.421,545,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+                    <Button x:Name="button_resolveProblem" Content="RESOLVE " Grid.Column="6" HorizontalAlignment="Left" Margin="101.421,587,0,0" VerticalAlignment="Top" Width="210" Height="45" FontWeight="Bold" Background="#FF0081CB" Click="button_resolveProblem_Click_1"/>
+                    <Label Content="PAINT PRODUCTION LINE " Grid.Column="5" HorizontalAlignment="Left" Margin="143.014,-2,0,0" VerticalAlignment="Top" Width="336" FontWeight="Bold" FontSize="24"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabItem_Manual" Header="MANUAL SCREEN" Margin="-3,-2,-1,2" Height="24" VerticalAlignment="Bottom">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="9*"/>
+                        <ColumnDefinition Width="229*"/>
+                    </Grid.ColumnDefinitions>
+                    <GridSplitter Grid.Column="1" HorizontalAlignment="Left" Height="709" Margin="469,0,0,0" VerticalAlignment="Top" Width="666" BorderThickness="2,0,0,0"/>
+                    <Button x:Name="button_stop_the2nd" Content="STOP" HorizontalAlignment="Left" Margin="364,756,0,0" VerticalAlignment="Top" Width="364" Height="113" Background="Red" Click="button_stop_Click" Foreground="#FFFDFDFD" FontSize="16" Grid.Column="1"/>
+                    <Button x:Name="button_StartProcess_the2nd" Content="START PROCESS" HorizontalAlignment="Left" Margin="18,755,0,0" VerticalAlignment="Top" Width="364" Height="113" Background="#FF0081CB" Foreground="#FFFDFDFD" FontSize="16" Click="button_StartProcess_Click" Grid.ColumnSpan="2"/>
+                    <Button x:Name="button_shutDownProcess_the2nd" Content="SHUT DOWN" HorizontalAlignment="Left" Margin="758,757,0,0" VerticalAlignment="Top" Width="364" Height="113" Background="#FFFFB900" Foreground="#FFFDFDFD" FontSize="16" Grid.Column="1" Click="button_shutDownProcess_the2nd_Click"/>
+                    <Separator HorizontalAlignment="Left" Height="100" Margin="0,659,-2,0" VerticalAlignment="Top" Width="1192" RenderTransformOrigin="0.42,-0.07" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="textBox_DownTime" HorizontalAlignment="Left" Height="187" Margin="1,414,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" FontSize="16" Grid.Column="1"/>
+                    <TextBox x:Name="textBox_status" HorizontalAlignment="Left" Height="23" Margin="209,186,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="192" FontSize="16" TextChanged="textBox_status_TextChanged" Grid.Column="1"/>
+                    <Label x:Name="label_status" Content="STATION(S) STATUS" HorizontalAlignment="Left" Margin="40,181,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="textBox_StartTime" HorizontalAlignment="Left" Height="23" Margin="209,238,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="192" FontSize="16" TextChanged="textBox_status_TextChanged" Grid.Column="1"/>
+                    <Label x:Name="label_status_Copy" Content="PRODUCTION START TIME" HorizontalAlignment="Left" Margin="41,232,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="textBox_StopTime" HorizontalAlignment="Left" Height="23" Margin="209,295,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="192" FontSize="16" TextChanged="textBox_status_TextChanged" Grid.Column="1"/>
+                    <Label x:Name="label_status_Copy1" Content="PRODUCTION STOP TIME" HorizontalAlignment="Left" Margin="40,289,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="textBox_NameStation" HorizontalAlignment="Left" Height="23" Margin="209,139,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="192" FontSize="16" TextChanged="textBox_status_TextChanged" Grid.Column="1"/>
+                    <Label x:Name="label_status_Copy2" Content="STATION(S) NAME" HorizontalAlignment="Left" Margin="41,133,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.ColumnSpan="2"/>
+                    <Label x:Name="label_status_Copy3" Content="DESCRIPTION" HorizontalAlignment="Left" Margin="40,375,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.ColumnSpan="2"/>
+                    <Label x:Name="label_status_Copy4" Content="PRODUCTION LINE IS DOWN" HorizontalAlignment="Left" Margin="41,23,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" Grid.ColumnSpan="2"/>
+                    <Button x:Name="button_confirmation" Content="CONFIRM DURATION" HorizontalAlignment="Left" Margin="512,525,0,0" VerticalAlignment="Top" Width="413" Height="76" Grid.Column="1" Background="#FF0081CB" Foreground="#FFF9F6F6" FontSize="16" Click="button_confirmation_Click"/>
+                    <TextBox x:Name="textBox_eventDuration" HorizontalAlignment="Left" Height="34" Margin="512,464,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="412" FontSize="16" TextChanged="textBox_status_TextChanged" Grid.Column="1"/>
+                    <Label x:Name="label_status_Copy5" Content="EVENT DURATION" HorizontalAlignment="Left" Margin="507,385,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" Grid.Column="1" Width="226"/>
+                    <Label x:Name="label_status_Copy6" Content="PROCCESS CANNOT BEGIN UNTIL:" HorizontalAlignment="Left" Margin="507,627,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1"/>
+                    <TextBox x:Name="textBox_Submission" HorizontalAlignment="Left" Height="155" Margin="515,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="414" FontSize="16" Grid.Column="1"/>
+                    <CheckBox Content="Accident" Grid.Column="1" HorizontalAlignment="Left" Margin="963,84,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label_status_Copy44" Content="REASON SUBMISSION" HorizontalAlignment="Left" Margin="511,28,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" Grid.Column="1"/>
+                    <CheckBox Content="False Error" Grid.Column="1" HorizontalAlignment="Left" Margin="963,112,0,0" VerticalAlignment="Top"/>
+                    <CheckBox Content="Alert Supervisor" Grid.Column="1" HorizontalAlignment="Left" Margin="963,140,0,0" VerticalAlignment="Top"/>
+                    <CheckBox Content="Rectified" Grid.Column="1" HorizontalAlignment="Left" Margin="963,164,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="button_confirmation_2" Content="CONFIRM SUBMISSION" HorizontalAlignment="Left" Margin="516,257,0,0" VerticalAlignment="Top" Width="416" Height="81" Grid.Column="1" Background="#FF0081CB" Foreground="#FFF9F6F6" FontSize="16" Click="button_confirmation_2_Click"/>
+                    <TextBox x:Name="textBox_SourceProblem" HorizontalAlignment="Left" Height="23" Margin="209,95,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="192" FontSize="16" TextChanged="textBox_status_TextChanged" Grid.Column="1"/>
+                    <Label x:Name="label_status_Copy7" Content="SOURCE OF PROBLEM" HorizontalAlignment="Left" Margin="41,89,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.ColumnSpan="2"/>
+                    <CheckBox Content="Not Rectified" Grid.Column="1" HorizontalAlignment="Left" Margin="963,189,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label_status_Copy8" Content="* DURATION HAS BEEN CONFIRMED" HorizontalAlignment="Left" Margin="779,665,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1"/>
+                    <Label x:Name="label_status_Copy9" Content="* REASON FOR PROBLEM HAS BEEN LOGGED" HorizontalAlignment="Left" Margin="779,629,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabItem_SHUTDOWN" Header="SHUT DOWN" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="88" Margin="-2,-2,-32,0">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="155*"/>
+                        <ColumnDefinition Width="1016*"/>
+                    </Grid.ColumnDefinitions>
+                    <Separator HorizontalAlignment="Left" Height="100" Margin="-2,665,-9,0" VerticalAlignment="Top" Width="1201" RenderTransformOrigin="0.42,-0.07" Grid.ColumnSpan="3"/>
+                    <Button x:Name="button_StartProcess_ShutDownScreen" Content="START PROCESS" HorizontalAlignment="Left" Margin="240,761,0,0" VerticalAlignment="Top" Width="364" Height="113" Background="#FF0081CB" Foreground="#FFFDFDFD" FontSize="16" Click="button_StartProcess_ShutDownScreen_Click" Grid.Column="2"/>
+                    <Button x:Name="button_warning_sealer_Copy" Content="STOPPED" HorizontalAlignment="Left" Margin="108,604,0,0" VerticalAlignment="Top" Width="114" Background="#FFF9F6F6" Height="39" Grid.ColumnSpan="2" FontWeight="Bold" Grid.Column="1"/>
+                    <Rectangle x:Name="rectangle_hopper_Copy" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="310" Margin="0,44,0,0" Stroke="Black" VerticalAlignment="Top" Width="366" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <Button x:Name="button_warning_hopper_Copy" Content="STOPPED" HorizontalAlignment="Left" Margin="0,313,0,0" VerticalAlignment="Top" Width="366" Background="Red" Height="41" FontWeight="Bold" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <Rectangle x:Name="rectangle_fillheads_Copy" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="309" Margin="237.014,45,0,0" Stroke="Black" VerticalAlignment="Top" Width="366" Grid.Column="2"/>
+                    <Button x:Name="button_warning_fill_heads_Copy" Content="STOPPED" HorizontalAlignment="Left" Margin="237.014,313,0,0" VerticalAlignment="Top" Width="366" Background="Red" Height="41" Grid.Column="2" FontWeight="Bold"/>
+                    <Rectangle x:Name="rectangle_weighStation_Copy" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="309" Margin="632.421,45,0,0" Stroke="Black" VerticalAlignment="Top" Width="366" Grid.Column="2"/>
+                    <Button x:Name="button_warning_weight_station_Copy" Content="STOPPED" HorizontalAlignment="Left" Margin="632.421,313,0,0" VerticalAlignment="Top" Width="366" Background="Red" Height="41" Grid.Column="2" FontWeight="Bold"/>
+                    <Rectangle x:Name="rectangle_Sealer_Copy" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="304" Margin="2,382,0,0" Stroke="Black" VerticalAlignment="Top" Width="366" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <Button x:Name="button_warning_sealer_Copy1" Content="STOPPED" HorizontalAlignment="Left" Margin="2,645,0,0" VerticalAlignment="Top" Width="366" Background="Red" Height="41" Grid.ColumnSpan="2" FontWeight="Bold" RenderTransformOrigin="0.526,0.932" Grid.Column="1"/>
+                    <Rectangle x:Name="rectangle_labeler_Copy" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="303" Margin="239.014,383,0,0" Stroke="Black" VerticalAlignment="Top" Width="366" Grid.Column="2"/>
+                    <Button x:Name="button_warning_labeler_Copy" Content="STOPPED" HorizontalAlignment="Left" Margin="239.014,645,0,0" VerticalAlignment="Top" Width="366" Background="Red" Height="41" Grid.Column="2" FontWeight="Bold"/>
+                    <Rectangle x:Name="rectangle_casePacker_Copy" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="303" Margin="634.421,383,0,0" Stroke="Black" VerticalAlignment="Top" Width="366" Grid.Column="2"/>
+                    <Button x:Name="button_warning_case_packer_Copy" Content="STOPPED" HorizontalAlignment="Left" Margin="634.421,645,0,0" VerticalAlignment="Top" Width="366" Background="Red" Height="42" Grid.Column="2" FontWeight="Bold"/>
+                    <TextBox x:Name="textBox_CanCount_Copy" HorizontalAlignment="Left" Height="23" Margin="68,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Grid.Column="2" FontSize="14" IsEnabled="False" Text="40"/>
+                    <Label Content="Number of cans in hopper:" Grid.Column="1" HorizontalAlignment="Left" Margin="33,150,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="textBox_FillHeadsCount_Copy" HorizontalAlignment="Left" Height="23" Margin="483,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Grid.Column="2" FontSize="14" IsEnabled="False" Text="13000"/>
+                    <Label Content="Volume of Paint/Product:" Grid.Column="2" HorizontalAlignment="Left" Margin="293.014,150,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+                    <TextBox x:Name="textBox_CanWeight_Copy" HorizontalAlignment="Left" Height="23" Margin="836,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Grid.Column="2" FontSize="14" IsEnabled="False" Text="3900"/>
+                    <Label Content="Can Weight:" Grid.Column="2" HorizontalAlignment="Left" Margin="729.421,150,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+                    <TextBox x:Name="textBox_Sealer_Copy" HorizontalAlignment="Left" Height="23" Margin="64,528,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Grid.Column="2" FontSize="14" IsEnabled="False" Text="10"/>
+                    <Label Content="Number of Lids in Hopper:" HorizontalAlignment="Left" Margin="29,525,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <TextBox x:Name="textBox_LabelsPresent_Copy" HorizontalAlignment="Left" Height="23" Margin="445.486,527,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Grid.Column="2" FontSize="14" IsEnabled="False" Text="YES"/>
+                    <Label Content="Labels Present:" HorizontalAlignment="Left" Margin="321.5,523,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Grid.Column="2"/>
+                    <TextBox x:Name="textBox_CasePacker_Copy" HorizontalAlignment="Left" Height="23" Margin="836,481,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Grid.Column="2" FontSize="14" IsEnabled="False" Text="1"/>
+                    <Label Content="Number of Cartons:" HorizontalAlignment="Left" Margin="688.421,477,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Grid.Column="2"/>
+                    <Label Content="HOPPER STATION" Grid.Column="1" HorizontalAlignment="Left" Margin="102.014,54,0,0" VerticalAlignment="Top" Width="158" FontWeight="Bold" Grid.ColumnSpan="2" FontSize="16" Height="35"/>
+                    <Label Content="FILL HEADS STATION" Grid.Column="2" HorizontalAlignment="Left" Margin="331.014,53,0,0" VerticalAlignment="Top" Width="174" FontWeight="Bold" FontSize="16"/>
+                    <Label Content="WEIGH STATION" Grid.Column="2" HorizontalAlignment="Left" Margin="757.421,58,0,0" VerticalAlignment="Top" Width="141" FontWeight="Bold" FontSize="16"/>
+                    <Label Content="SEALER STATION" Grid.Column="1" HorizontalAlignment="Left" Margin="115.014,398,0,0" VerticalAlignment="Top" Width="141" FontWeight="Bold" Grid.ColumnSpan="2" FontSize="16"/>
+                    <Label Content="LABELER STATION" Grid.Column="2" HorizontalAlignment="Left" Margin="344.014,400,0,0" VerticalAlignment="Top" Width="174" FontWeight="Bold" FontSize="16"/>
+                    <Label Content="CASE PACKER STATION" Grid.Column="2" HorizontalAlignment="Left" Margin="727.421,401,0,0" VerticalAlignment="Top" Width="210" FontWeight="Bold" FontSize="16"/>
+                    <Separator HorizontalAlignment="Left" Height="100" Margin="0,652,-11,0" VerticalAlignment="Top" Width="1201" RenderTransformOrigin="0.42,-0.07" Grid.ColumnSpan="3"/>
+                    <TextBox x:Name="textBox_FillHeadLocation_Copy" HorizontalAlignment="Left" Height="23" Margin="483,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Grid.Column="2" FontSize="14" IsEnabled="False" Text="UP"/>
+                    <Label Content="Fill Head Status:" Grid.Column="2" HorizontalAlignment="Left" Margin="353.014,183,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+                    <TextBox x:Name="textBox_PackerStatus_Copy" HorizontalAlignment="Left" Height="23" Margin="836,516,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Grid.Column="2" FontSize="14" IsEnabled="False" Text="CLEAR"/>
+                    <Label Content="Packer Status:" Grid.Column="2" HorizontalAlignment="Left" Margin="726.421,511,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+                    <TextBox x:Name="textBox_PalletStatus_Copy" HorizontalAlignment="Left" Height="23" Margin="836,550,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Grid.Column="2" FontSize="14" IsEnabled="False" Text="JAMMED"/>
+                    <Label Content="Pallet Status:" Grid.Column="2" HorizontalAlignment="Left" Margin="731.421,545,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+                    <Label Content="PAINT PRODUCTION LINE " Grid.Column="2" HorizontalAlignment="Left" Margin="267.014,-2,0,0" VerticalAlignment="Top" Width="336" FontWeight="Bold" FontSize="24"/>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+
+    </Grid>
+</Window>
